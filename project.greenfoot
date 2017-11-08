@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Oct 25 13:26:43 CDT 2017
+#Wed Nov 08 14:25:05 CST 2017
 target2.width=80
 editor.fx.0.height=700
 class.Creature.image=1186536_1362183778837_full.png
@@ -103,10 +103,10 @@ dependency1.from=CreatureWorld
 dependency25.from=CreatureWorld
 target15.type=ClassTarget
 mainWindow.y=0
-editor.swing.0.y=520
+editor.swing.0.y=0
 target5.showInterface=false
 mainWindow.x=953
-editor.swing.0.x=953
+editor.swing.0.x=917
 dependency19.from=CreatureWorld
 dependency16.to=Creature
 target8.showInterface=false
@@ -121,7 +121,7 @@ target14.y=370
 target13.typeParameters=
 target15.width=80
 target14.x=100
-editor.swing.0.width=975
+editor.swing.0.width=974
 target6.name=HealthBar
 target9.height=50
 dependency23.to=CreatureWorld
