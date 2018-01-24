@@ -29,6 +29,12 @@ public class TextBox extends Actor
         display();
     }
     
+    /**
+     * display show the following text message sizes of the current value
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
     private void display()
     {
         if( border == true )
@@ -39,21 +45,29 @@ public class TextBox extends Actor
         setImage( img );
     }
     
+    /**
+     * getText returns the textbox from the current value
+     * 
+     * @param There are no parameters
+     * @return the Text message from the current value
+     */
     public String getText()
     {
         return text;
     }
     
+    /**
+     * setText sets what text's font from the current value
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
     public void setText( String message )
     {
         text = message;
         img = new GreenfootImage( text, fontSize, foreground, background );
     }
     
-    /**
-     * Act - do whatever the TextBox wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
         // Add your action code here.

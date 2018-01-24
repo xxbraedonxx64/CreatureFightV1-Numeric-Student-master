@@ -59,6 +59,12 @@ public class Menu extends Actor
         handleMouse();
     }
     
+    /**
+     * handleMouse the button who react when the mouse clicking the button then latches the button's con
+     * 
+     * @param There are no parameters
+     * @return Nothing is returned
+     */
     private void handleMouse()
     {
         CreatureWorld world = (CreatureWorld)getWorld();
@@ -68,48 +74,78 @@ public class Menu extends Actor
         {
             if( titleBar.getText().equalsIgnoreCase("Fight") )
             {
-                distance = 112;
+                distance = 35;
             }
             else
             {
-               distance = 174;
+               distance = 195;
             }
         }
         else
         {
             if( titleBar.getText().equalsIgnoreCase("Fight") )
             {
-                distance = 260;
+                distance = 362;
             }
             else
             {
-                distance = 174;
+                distance = 195;
             }
         }
        
-        if( Greenfoot.mouseClicked( titleBar )  )
+        if( getObjectsInRange(distance, Creature.class).get(0).getWhetherPlayerOne() == true && world.getPlayerOneTurn() == true)
         {
-            if( visable == false )
+            if( Greenfoot.mouseClicked( titleBar )  )
             {
-                getWorld().addObject( menuItems, getX(), getY() + (titleHeight + menuHeight) /2 );
-            }
-            else
-            {
-                getWorld().removeObject( menuItems );                 
+                if( visable == false )
+                {
+                    getWorld().addObject( menuItems, getX(), getY() + (titleHeight + menuHeight) /2 );
+                }
+                else
+                {
+                    getWorld().removeObject( menuItems );                 
+                }
+                
+                visable = !visable;
+      
             }
             
-            visable = !visable;
-            
+            if( Greenfoot.mouseClicked( menuItems ) )
+            {
+                    MouseInfo mi = Greenfoot.getMouseInfo();
+                    int menuIndex = ( (mi.getY() - menuItems.getY() + menuHeight /2 ) - 1 ) / fontSize ;
+                    visable = !visable;
+                    getWorld().removeObject( menuItems );
+                    commands.execute( menuIndex, world.getPlayerOne() );           
+            }
         }
-        
-        if( Greenfoot.mouseClicked( menuItems ) )
+        else if(getObjectsInRange(distance, Creature.class).get(0).getWhetherPlayerOne() == false && world.getPlayerOneTurn() == false)
         {
-            MouseInfo mi = Greenfoot.getMouseInfo();
-            int menuIndex = ( (mi.getY() - menuItems.getY() + menuHeight /2 ) - 1 ) / fontSize ;
-            visable = !visable;
-            getWorld().removeObject( menuItems );
-            commands.execute( menuIndex,getObjectsInRange( distance, Creature.class ).get(0) );
+            if( Greenfoot.mouseClicked( titleBar )  )
+            {
+                if( visable == false )
+                {
+                    getWorld().addObject( menuItems, getX(), getY() + (titleHeight + menuHeight) /2 );
+                }
+                else
+                {
+                    getWorld().removeObject( menuItems );                 
+                }
+                
+                visable = !visable;
+      
+            }
+            
+            if( Greenfoot.mouseClicked( menuItems ) )
+            {
+                    MouseInfo mi = Greenfoot.getMouseInfo();
+                    int menuIndex = ( (mi.getY() - menuItems.getY() + menuHeight /2 ) - 1 ) / fontSize ;
+                    visable = !visable;
+                    getWorld().removeObject( menuItems );
+                    commands.execute( menuIndex, world.getPlayerTwo() );           
+            }
         }
     }
-    
 }
+
+

@@ -6,15 +6,16 @@ import javax.swing.JOptionPane;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Charmander extends Creature
+public class Golem extends Creature
 {
-    public Charmander( World w )
+    public Golem( World w )
     {
-        super(700, true,"Fire" );
+        super(950, true,"Rock" );
         getImage().scale( 150, 100);
         w.addObject( getHealthBar(), 300, w.getHeight() - 50 );
+        getHealthBar().getImage().setTransparency(0);
     }
-  
+    
     public void act() 
     {
         // Add your action code here.
@@ -22,9 +23,9 @@ public class Charmander extends Creature
         
         if( getHealthBar().getCurrent() <= 0 )
         {
-            getWorld().showText("Charmander has fainted…",getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
+            getWorld().showText("Golem has fainted…",getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
             Greenfoot.delay(30);
-            if( playerWorld.getNewOneCreature(1).getHealthBar().getCurrent() > 0 )
+            if( playerWorld.getNewOneCreature(0).getHealthBar().getCurrent() > 0 )
             {
                 switchCreature(0);
                 playerWorld.changeTurn(true);
@@ -43,10 +44,10 @@ public class Charmander extends Creature
     }
     
     /**
-     * attack the creature attacks the enemy creature doing damage and has there weakness and what there strong against
+     * Attack the creature attacks the enemy creature doing damage and has there weakness and what there strong against
      * 
      * @param There are no parameters
-     * @return
+     * @return Nothing is returned
      */
         public void attack ( int idx )
     {
@@ -56,19 +57,25 @@ public class Charmander extends Creature
         attackAnimation();
         if( idx <= 0 )
         {
-            enemy.getHealthBar().add( -25 );
+            enemy.getHealthBar().add( -30 );
         }
         else
         {
-            if( enemyType.equalsIgnoreCase("Water") )
+            if( enemyType.equalsIgnoreCase("Electric") )
             {
-                enemy.getHealthBar().add( -70/2 );
-                getWorld().showText("It's not very effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26 );
+                enemy.getHealthBar().add( -80*2 );
+                getWorld().showText( "It's super effective!", getWorld().getWidth()/2, getWorld().getHeight()/2 );
+                Greenfoot.delay(30);
+            }
+            else if( enemyType.equalsIgnoreCase("Flying") )
+            {
+                enemy.getHealthBar().add( 0 );
+                getWorld().showText( "It has no effect", getWorld().getWidth()/2, getWorld().getHeight()/2 );
                 Greenfoot.delay(30);
             }
             else
             {
-                enemy.getHealthBar().add( - 70 );
+                enemy.getHealthBar().add( -80 );
             }
         }
         world.changeTurn(false);
@@ -93,7 +100,7 @@ public class Charmander extends Creature
     }
     
     /**
-     * switchCreature the current Creature can switch out with other Creature and when the creature faints and shows a message
+     * switchCreature the Creature can switch out with other Creature and when the creature faints and shows a message
      * 
      * @param There are no parameters
      * @return Nothing is returned
@@ -104,7 +111,7 @@ public class Charmander extends Creature
         Creature switchCreature;
         if( idx == 0 )
         {
-            switchCreature = world.getNewOneCreature(1);
+            switchCreature = world.getNewOneCreature(0);
         }
         else
         {
@@ -127,7 +134,7 @@ public class Charmander extends Creature
             
             if( idx == 0 )
             {
-                world.changePlayerOne("Golem");
+                world.changePlayerOne("Charmander");
             }
             else
             {
@@ -139,7 +146,7 @@ public class Charmander extends Creature
     }
     
     /**
-     * switchedIn Gets The Charmander Image Then Moves In To The Current Value When Seleted
+     * switchIn Gets The Golem Image Then Moves In To The Current Value When Seleted
      * 
      * @param There are no parameters
      * @return Nothing is returned

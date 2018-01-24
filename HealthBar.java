@@ -90,8 +90,10 @@ public class HealthBar extends Actor
     }
 
     /**
-     * Act - do whatever the HealthBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act animates my health bar by changing the current health and updating the image
+     * 
+     * @param There are no parameteres
+     * @return Nothing is returned
      */
     public void act()
     {
@@ -116,8 +118,7 @@ public class HealthBar extends Actor
     }
 
     /**
-     * updateBar updates the image of the health bar when the current health
-     * changes values
+     * updateBar updates the image of the health bar
      * 
      * @param There are no parameters
      * @return Nothing is returned
@@ -165,9 +166,9 @@ public class HealthBar extends Actor
     }
 
     /**
-     * add will change the current value of the health in the health bar
+     * add change the current value of the health bar by a given amount
      * 
-     * @param change is the amount that the current health will be changed by
+     * @param change is the amount that the health bar will be changed by
      * @return Nothing is returned
      */
     public void add( int change )
@@ -187,9 +188,9 @@ public class HealthBar extends Actor
     }
 
     /**
-     * setTarget will change the target value to whatever the user chooses
+     * setTarget will change the target value to a given value
      * 
-     * @param t is the new, user-chosen target value
+     * @param t is the new user chosen target value
      * @return Nothing is returned
      */
     public void setTarget( int t )
@@ -198,9 +199,9 @@ public class HealthBar extends Actor
     }
 
     /**
-     * setCurrent will change the current value to whatever the user chooses
+     * setCurrent will change the target value to given value
      * 
-     * @param c is the new, user-chosen current value
+     * @param c is the new user chosen current value
      * @return Nothing is returned
      */
     public void setCurrent( int c )
@@ -209,9 +210,9 @@ public class HealthBar extends Actor
     }
 
     /**
-     * setMax will change the maximum value to whatever the user chooses
+     * setMax will change the maximum value to given value
      * 
-     * @param m is the new, user-chosen maximum value
+     * @param m is the new, user chosen maximum value
      * @return Nothing is returned
      */
     public void setMax( int m )
@@ -220,9 +221,9 @@ public class HealthBar extends Actor
     }
 
     /**
-     * setSpeed will change the speed to whatever the user chooses
+     * setSpeed will change the speed to given vaule
      * 
-     * @param s is the new, user-chosen speed
+     * @param s is the new user chosen speed
      * @return Nothing is returned
      */
     public void setSpeed( int s )
@@ -231,7 +232,7 @@ public class HealthBar extends Actor
     }
 
     /**
-     * getMax returns the maximum value for use in other sections of code or for the user's information
+     * getMax returns the maximum value for use in other code or for the user's information
      * 
      * @param There are no parameters
      * @return an integer representing the maximum value
@@ -243,7 +244,7 @@ public class HealthBar extends Actor
     }
 
     /**
-     * getCurrent returns the current health value for use in other sections of code or for the user's information
+     * getCurrent returns the current value for use in other sections of code or for the user's information
      * 
      * @param There are no parameters
      * @return an integer representing the current health value
@@ -253,5 +254,4 @@ public class HealthBar extends Actor
         //Change this
         return current;
     }
-    
 }

@@ -13,13 +13,6 @@ public class Creature extends Actor
     private boolean playerOneCreature;
     private String type;
     
-    
-    /**
-     * Default constructor for objects of the Creature class
-     * 
-     * @param There are no parameters
-     * @return an object of the Creature class
-     */
     public Creature()
     {
         healthNumber = 500;
@@ -28,43 +21,58 @@ public class Creature extends Actor
         
     }
 
-    /**
-     * Constructor that allows customization of objects of the Creature class
-     * 
-     * @param health is the amount of health the Creature object will have
-     * @param whichPlayer discusses whether the creature belongs to player 1 or player 2
-     * @return an object of the Creature class
-     */
     public Creature( int health, boolean isPlayerOne, String creatureType )
     {
         healthNumber = health;
         creatureBar = new HealthBar ( healthNumber, healthNumber, 10 );
         type = creatureType;
-        playerOneCreature = true;
+        playerOneCreature = isPlayerOne;
     }
     
+    /**
+     * getType get the Creatures type 
+     * 
+     * @param There are no parameters
+     * @return the creature's type 
+     */
     public String getType()
     {
         return type;
     }
     
+    /**
+     * getHealthBar get the Creatures health bar
+     * 
+     * @param There are no parameters
+     * @return the creature's health bar
+     */
     protected HealthBar getHealthBar()
     {
         return creatureBar;
     }
     
+    /**
+     * getWhetherPlayerOne checks if its playerone's turn or playertwo's turns
+     * 
+     * @param There are no parameters
+     * @return the 
+     */
     public boolean getWhetherPlayerOne()
     {
         return playerOneCreature;
     }
-
-    /**
-     * attack is the code that is run when the Creature attacks its enemy
-     * 
-     * @param There are no parameters
-     * @return Nothing is returned
-     */
+    
     public void attack( int idx )
+    {
+        //empty method that will get overriden in subclasses}    }
+    }
+    
+    public void switchCreature( int idx )
+    {
+        //empty method that will get overriden in subclasses}    }
+    }
+    
+    public void switchedIn()
     {
         //empty method that will get overriden in subclasses}    }
     }

@@ -6,13 +6,14 @@ import javax.swing.JOptionPane;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Charmander extends Creature
+public class Ivysaur extends Creature
 {
-    public Charmander( World w )
+    public Ivysaur( World w )
     {
-        super(700, true,"Fire" );
+        super(720, true,"Grass" );
         getImage().scale( 150, 100);
         w.addObject( getHealthBar(), 300, w.getHeight() - 50 );
+        getHealthBar().getImage().setTransparency(0);
     }
   
     public void act() 
@@ -22,16 +23,16 @@ public class Charmander extends Creature
         
         if( getHealthBar().getCurrent() <= 0 )
         {
-            getWorld().showText("Charmander has fainted…",getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
+            getWorld().showText("Ivysaur has fainted…",getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
             Greenfoot.delay(30);
-            if( playerWorld.getNewOneCreature(1).getHealthBar().getCurrent() > 0 )
+            if( playerWorld.getNewOneCreature(0).getHealthBar().getCurrent() > 0 )
             {
                 switchCreature(0);
                 playerWorld.changeTurn(true);
                 getWorld().showText("", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26 );
                 getWorld().removeObject(this);
             }
-            else if( playerWorld.getNewOneCreature(2).getHealthBar().getCurrent() > 0 )
+            else if( playerWorld.getNewOneCreature(1).getHealthBar().getCurrent() > 0 )
             {
                 switchCreature(1);
                 playerWorld.changeTurn(true);
@@ -43,7 +44,7 @@ public class Charmander extends Creature
     }
     
     /**
-     * attack the creature attacks the enemy creature doing damage and has there weakness and what there strong against
+     * Attack the creature attacks the enemy creature doing damage and has there weakness and what there strong against
      * 
      * @param There are no parameters
      * @return
@@ -56,19 +57,31 @@ public class Charmander extends Creature
         attackAnimation();
         if( idx <= 0 )
         {
-            enemy.getHealthBar().add( -25 );
+            enemy.getHealthBar().add( -30 );
         }
         else
         {
-            if( enemyType.equalsIgnoreCase("Water") )
+            if( enemyType.equalsIgnoreCase("Electric") )
             {
-                enemy.getHealthBar().add( -70/2 );
+                enemy.getHealthBar().add( -60/2 );
                 getWorld().showText("It's not very effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26 );
+                Greenfoot.delay(30);
+            }
+            else if( enemyType.equalsIgnoreCase("Flying") )
+            {
+                enemy.getHealthBar().add( -60/2 );
+                getWorld().showText("It's not very effective...", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26 );
+                Greenfoot.delay(30);
+            }
+            else if( enemyType.equalsIgnoreCase("Water") )
+            {
+                enemy.getHealthBar().add( -60*2 ); 
+                getWorld().showText("It's super effective!", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26 );
                 Greenfoot.delay(30);
             }
             else
             {
-                enemy.getHealthBar().add( - 70 );
+                enemy.getHealthBar().add( -60 );
             }
         }
         world.changeTurn(false);
@@ -93,7 +106,7 @@ public class Charmander extends Creature
     }
     
     /**
-     * switchCreature the current Creature can switch out with other Creature and when the creature faints and shows a message
+     * switchCreature the Creature can switch out with other Creature and when the creature faints and shows a message
      * 
      * @param There are no parameters
      * @return Nothing is returned
@@ -104,11 +117,11 @@ public class Charmander extends Creature
         Creature switchCreature;
         if( idx == 0 )
         {
-            switchCreature = world.getNewOneCreature(1);
+            switchCreature = world.getNewOneCreature(0);
         }
         else
         {
-            switchCreature = world.getNewOneCreature(2);
+            switchCreature = world.getNewOneCreature(1);
         }
         
         if( switchCreature.getHealthBar().getCurrent() <= 0 )
@@ -127,11 +140,11 @@ public class Charmander extends Creature
             
             if( idx == 0 )
             {
-                world.changePlayerOne("Golem");
+                world.changePlayerOne("Charmander");
             }
             else
             {
-                world.changePlayerOne("Ivysaur");
+                world.changePlayerOne("Golem");
             }
             switchCreature.switchedIn();
             world.changeTurn(false);
@@ -139,7 +152,7 @@ public class Charmander extends Creature
     }
     
     /**
-     * switchedIn Gets The Charmander Image Then Moves In To The Current Value When Seleted
+     * switchIn Gets The Ivysaur Image Then Moves In To The Current Value When Seleted
      * 
      * @param There are no parameters
      * @return Nothing is returned
